@@ -22,7 +22,7 @@ export const Header = () => {
           <div className="container">
           <HeaderContainer>
             <nav>
-                <NavLinkStyled to="/moviesdb">Home</NavLinkStyled>
+                <NavLinkStyled to="/">Home</NavLinkStyled>
                 {session && <NavLinkStyled to="favorite">Favorite</NavLinkStyled>}
             </nav>
             <InputStyled type="checkbox" name="" id="burger-menu" checked={checked} onChange={handleChange}/>
