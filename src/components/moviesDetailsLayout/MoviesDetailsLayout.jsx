@@ -50,7 +50,6 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
       if(data.length !== 0) {
         const checkIsOnList = data.some(el => Number(el.movie_id) === id);
         if(checkIsOnList) {
-          console.log(String(id))
           await deleteFromFavorite(String(id))
           setIsOnFavorite(false)
           return;
