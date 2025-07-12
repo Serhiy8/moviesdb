@@ -31,7 +31,7 @@ export const Signup = () => {
     return(
         <form style={{marginTop: 150}} onSubmit={handldesubmit}>
             <h2>Sing up now!</h2>
-            <p>Already have an account? <Link to="/moviesdb/signin">Sign in</Link></p>
+            <p>Already have an account? <Link to="/signin">Sign in</Link></p>
             <div>
                 <input type="email" name="email" onChange={onInputChange}/>
                 <input type="password" name="password" onChange={onInputChange}/>

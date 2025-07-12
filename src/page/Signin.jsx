@@ -32,7 +32,7 @@ export const Signin = () => {
     return(
         <form style={{marginTop: 150}} onSubmit={handldesubmit}>
             <h2>Sing in!</h2>
-            <p>Don't have account? <Link to="/moviesdb/signup">Sign up</Link></p>
+            <p>Don't have account? <Link to="/signup">Sign up</Link></p>
             <div>
                 <input type="email" name="email" onChange={onInputChange}/>
                 <input type="password" name="password" onChange={onInputChange}/>
