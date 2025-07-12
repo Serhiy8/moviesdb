@@ -17,9 +17,9 @@ function App() {
   
   return (
     <Routes>
-      <Route path="/moviesdb" element={<Header />}>
+      <Route path="/" element={<Header />}>
         <Route index element={<Home /> } />
-        <Route path="favorite" element={session ? <Favorite /> : <Navigate to="/moviesdb" />}/>
+        <Route path="favorite" element={session ? <Favorite /> : <Navigate to="/" />}/>
         <Route path="movies" element={<Movies />}/>
         <Route path="movies/:id" element={ <MovieDetails />}>
           <Route path="cast" element={<Cast />}/>
