@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { supabase } from "../supabase/supabase";
 import { App } from "../App";
 import { SessionContext } from "./SessionContext";
+import { ToastContainer } from "react-toastify";
 
 export function Main() {
   const [session, setSession] = useState(null)
@@ -25,6 +26,7 @@ export function Main() {
   return (
     <SessionContext.Provider value={session}>
       <App />
+      <ToastContainer autoClose={1500} />
     </SessionContext.Provider>
   )
 }

@@ -6,6 +6,7 @@ import BackLink from '../backLink/BackLink';
 import { Thumb, CardThumb, TextThumb, SpanStyled, List, FavoriteBtn, CardTextThumb } from './moviesDetailsLayoutSt.styled';
 import { SessionContext } from '../../context/SessionContext';
 import { addToFavorite, getFromFavorite, deleteFromFavorite } from '../operations/supabaseService';
+import { toast } from 'react-toastify';
 
 const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}) => {
 
@@ -45,21 +46,27 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
 
     const handlefavorite = async() => {
       if(!session){
+        toast.info('Register to add to favorites.')
         return;
       }
 
       const data = await getFromFavorite();
 
-      if(data.length !== 0) {
+      if(data && data.length !== 0) {
         const checkIsOnList = data.some(el => Number(el.movie_id) === id);
         if(checkIsOnList) {
-          await deleteFromFavorite(String(id))
+          const response = await deleteFromFavorite(String(id));
+          if(response.status !== 204){
+            toast.error('Something went wrong. Try again.');
+            return;
+          }
+          toast.success('Movie deleted.')
           setIsOnFavorite(false)
           return;
         }  
       }
       
-      await addToFavorite({
+      const response = await addToFavorite({
           user_id: session.user.id,
           movie_id: id,
           poster_path,
@@ -67,7 +74,12 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
           overview,
           vote_average
         });
-        setIsOnFavorite(true)
+        if(response.status !== 201){
+          toast.error('Movie not added!')
+          return;
+        }
+        toast.success('Movie added!');
+        setIsOnFavorite(true);
     }
 
     return (

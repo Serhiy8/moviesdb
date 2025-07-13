@@ -37,25 +37,18 @@ const getFromFavorite = async () => {
 }
 
 const addToFavorite = async (data) => {
-    const res = await supabase
+    const response = await supabase
   .from('moviesdb')
   .insert(data);
-  if(res.error){
-        console.log(res.error.message);
-        return;
-    }
-    return res;
+    return response;
 }
 
 const deleteFromFavorite = async (id) => {
-      const {data, error} = await supabase
+      const response = await supabase
         .from('moviesdb')
         .delete()
         .eq('movie_id', id)
-        if(error){
-            console.log(error)
-        }
-      return data;
+      return response;
   }
 
 export {supabaseSignup, supabaseSignin, supabaseSignout, addToFavorite, getFromFavorite, deleteFromFavorite};
