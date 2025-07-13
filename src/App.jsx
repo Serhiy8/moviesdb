@@ -24,8 +24,8 @@ function App() {
         <Route path="movies/:id" element={ <MovieDetails />}>
           <Route path="cast" element={<Cast />}/>
         </Route> 
-        <Route path="signup" element={<Signup/>}/>
-        <Route path="signin" element={<Signin />}/>
+        <Route path="signup" element={!session ? <Signup/>:<Navigate to='/'/>}/>
+        <Route path="signin" element={!session ? <Signin />:<Navigate to='/'/>}/>
       </Route>
     </Routes>
   );

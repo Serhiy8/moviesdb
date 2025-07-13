@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom"
-import { HeaderStyled, NavContainerStyled, NavLinkStyled,  LabelStyled, InputStyled, HeaderContainer } from "./header.styled";
+import { HeaderStyled, NavLinkStyled, InputThumb } from "./header.styled";
 import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../../context/SessionContext";
 
@@ -18,27 +18,30 @@ export const Header = () => {
 
     return (
       <>
-        <HeaderStyled>
+        <HeaderStyled>        
           <div className="container">
-          <HeaderContainer>
-            <nav>
-                <NavLinkStyled to="/">Home</NavLinkStyled>
-                {session && <NavLinkStyled to="favorite">Favorite</NavLinkStyled>}
-            </nav>
-            <InputStyled type="checkbox" name="" id="burger-menu" checked={checked} onChange={handleChange}/>
-            <LabelStyled htmlFor="burger-menu">
-                <span></span>
-            </LabelStyled>        
-          <NavContainerStyled>
-            <ul>
-                <li><NavLinkStyled to="signin">Sign in</NavLinkStyled></li>
-                <li><NavLinkStyled to="signup">Sign up</NavLinkStyled></li>
-            </ul>               
-          </NavContainerStyled>
-          </HeaderContainer>
+            <InputThumb>
+                <input type="checkbox" name="" id="burger-menu" checked={checked} onChange={handleChange}/>
+                <label htmlFor="burger-menu">
+                  <span></span>
+                </label>
+                <div>                   
+                <nav>
+                  <ul>
+                    <li><NavLinkStyled to="/">Home</NavLinkStyled></li>
+                    {session && <li><NavLinkStyled to="favorite">Favorite</NavLinkStyled></li>}                 
+                    {!session && <li><NavLinkStyled to="signin">Sign in</NavLinkStyled></li>}
+                    {!session && <li><NavLinkStyled to="signup">Sign up</NavLinkStyled></li>}
+                  </ul>
+                </nav>               
+              </div>  
+            </InputThumb>             
+                    
           </div>
-        </HeaderStyled>
+          </HeaderStyled>
         <Outlet />
       </>
+      
+      
     );
 }

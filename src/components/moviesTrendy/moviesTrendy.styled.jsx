@@ -4,18 +4,16 @@ import styled from "styled-components";
 export const Thumb = styled.div`
 margin: 0 auto;
 text-align: center;
+padding: 100px 0 35px 0;
 max-width: 475px;
-line-height: 1.5em;
-letter-spacing: 2px;
 & h1 {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    font-size: 34px;
+    font-size: 56px;
+    margin-bottom: 36px;
 }
 & ul {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 32px;
 } 
 & ul > li {    
     box-shadow: 0 0 10px white, 0 0 20px white;

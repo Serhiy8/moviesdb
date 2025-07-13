@@ -5,7 +5,7 @@ export const Home = () => {
     const location = useLocation()
 
     return (
-        <div className="container" style={{marginTop: '65px'}}>
+        <div className="container">
             <MoviesTrendy location={location}/>
         </div>
     )
