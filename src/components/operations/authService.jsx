@@ -17,6 +17,14 @@ const supabaseSignin = async(user) => {
     return {data};
 }
 
+const supabaseSignout = async() => {
+    const { error } = await supabase.auth.signOut()
+    if(error){
+        console.log(error.message);
+        return;
+    }
+}
+
 const getFromFavorite = async () => {
     const {data, error} = await supabase
   .from('moviesdb')
@@ -50,4 +58,4 @@ const deleteFromFavorite = async (id) => {
       return data;
   }
 
-export {supabaseSignup, supabaseSignin, addToFavorite, getFromFavorite, deleteFromFavorite};
+export {supabaseSignup, supabaseSignin, supabaseSignout, addToFavorite, getFromFavorite, deleteFromFavorite};

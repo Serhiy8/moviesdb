@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Thumb } from "./signupLayout.styled";
+import { Thumb } from "./signupInLayout.styled";
 
 export const SigninLayout = ({handldesubmit}) => {
     
@@ -34,7 +34,7 @@ export const SigninLayout = ({handldesubmit}) => {
         <Thumb>
             <form onSubmit={onSubmitForm}>
                 <h2>Sing in now!</h2>
-                <p>Already don't have an account? <Link to="/signin">Sign up</Link></p>
+                <p>Already don't have an account? <Link to="/signup">Sign up</Link></p>
                 <div>
                     <input type="email" name="email" onChange={onInputChange}/>
                     <input type="password" name="password" onChange={onInputChange}/>

@@ -70,7 +70,7 @@ const InputThumb = styled.div`
     top: 11px;
   }
 }
-  & div {    
+  & > div {    
     position: absolute;
     top: 0;
     left: -100%;
@@ -88,6 +88,7 @@ const InputThumb = styled.div`
   & div > nav > ul {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 24px;
     font-size: 24px;
     font-weight: 700;
@@ -100,7 +101,26 @@ const NavLinkStyled = styled(NavLink)`
   font-size: 18px;
 `
 
-export {HeaderStyled, InputThumb, NavLinkStyled}
+const SignOutThumb = styled.div`
+text-align: center;
+& > button{
+  align-self: center;
+  margin-top: 16px;
+  padding: 6px 12px;
+  background: #00ffff;
+  outline: none;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus{
+    background-color: #00d4d4;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff55;
+  }}
+`
+
+export {HeaderStyled, InputThumb, NavLinkStyled, SignOutThumb}
 
 // const ThumbStyled = styled.div`
 //   position: fixed;
