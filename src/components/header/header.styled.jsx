@@ -8,6 +8,11 @@ const HeaderStyled = styled.header`
   width: 100%;
   background-color: #151515;
   height: 65px;
+  border-bottom: 1px solid #ffffff;
+  @media(min-width: 768px){
+    height: fit-content;
+    padding: 8px 0;
+  }
 `
 
 const InputThumb = styled.div`
@@ -35,7 +40,7 @@ const InputThumb = styled.div`
       display: none;
       margin-left: auto;
 
-    @media (max-width: 784px){
+    @media (max-width: 768px){
         position: relative;
         display: block;
         height: 25px;
@@ -77,9 +82,17 @@ const InputThumb = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 24px;
     width: 100%;
     height: 100vh;
     background-color: #151515;
+      @media(min-width: 768px){
+        position: static;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+      }
   }
   & input:checked ~ div {
     left: 0;
@@ -92,6 +105,9 @@ const InputThumb = styled.div`
     gap: 24px;
     font-size: 24px;
     font-weight: 700;
+    @media (min-width: 768px){
+      flex-direction: row;
+    }
   }
 `
 
@@ -99,10 +115,18 @@ const NavLinkStyled = styled(NavLink)`
   color: white;
   text-decoration: none;
   font-size: 18px;
+  @media (min-width: 768px){
+      padding: 6px 12px;
+    }
 `
 
 const SignOutThumb = styled.div`
 text-align: center;
+@media (min-width: 768px){
+  display: flex;
+    align-items: center;
+    gap: 24px;
+}
 & > button{
   align-self: center;
   margin-top: 16px;
@@ -117,98 +141,11 @@ text-align: center;
   &:focus{
     background-color: #00d4d4;
     box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff55;
-  }}
+  }
+  @media (min-width: 768px){
+    margin: 0;
+}
+  }
 `
 
 export {HeaderStyled, InputThumb, NavLinkStyled, SignOutThumb}
-
-// const ThumbStyled = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   padding: 20px 0;
-//   z-index: 999;
-//   background-color: #151515;
-// `
-
-// const HeaderContainer = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// `
-
-// const NavContainerStyled = styled.div`
-//   display: flex;
-//   gap: 20px;
-//   transition: .5s;
-//   position: absolute;
-//     background-color: #151515;
-//    align-items: center;
-//    justify-content: center;
-//    height: 100vh;
-//     z-index: -1;
-//     flex-direction: column;
-//     text-align: center;
-//     left: -100vw;
-//     right: 100vw;
-//     & ul {
-//       display: flex;
-//       gap: 12px;
-//       flex-direction: column;
-//     }
-// `
-
-// const LabelStyled = styled.label`
-//     display: none;
-//     margin-left: auto;
-
-//     @media (max-width: 784px){
-//         position: relative;
-//         display: block;
-//         height: 25px;
-//         width: 30px;
-//     }
-//     &::before,
-//     &::after,
-//     span {
-//     position: absolute;
-//     width: 100%;
-//     height: 3px;
-//     background-color: white;
-//     transition: 0.3s;
-//     display: block;
-//     border-radius: 2px;
-//   }
-//   &::before{
-//     content: "";
-//     top: 0;
-//   }
-//   &::after{
-//     content: "";
-//     bottom: 0;
-//   }
-//   & span {
-//     top: 11px;
-//   }
-// `
-
-// const InputStyled = styled.input`
-//     display: none;
-//     &:checked ~ label::after {
-//       transform: rotate(45deg);
-//       bottom: 10px;
-//     }
-//     &:checked ~ label::before {
-//       transform: rotate(-45deg);
-//       top: 12px;
-//     }
-//     &:checked ~ label span {
-//       transform: rotate(-45deg);
-//       top: 12px;
-//     }
-//     &:checked ~ div {
-//       left: 0;
-//       right: 0;
-//     }
-// `

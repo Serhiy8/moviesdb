@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import fetchMovies from "../operations/fetchMovies";
-import { NavLinkStyled, Thumb } from "./moviesTrendy.styled";
+import fetchMovies from "../operations/tmdbMovies";
+import { NavLinkStyled, Thumb, TextOverwrite } from "../listMoviesSt.styled";
 
 const url = "3/trending/movie/day";
 
@@ -28,8 +28,8 @@ export const MoviesTrendy = ({location}) =>{
                         <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="" />
                         <div>
                             <h2>{movie.title}</h2>
-                            <p>{movie.overview}</p>
-                            <p>{movie.vote_average}</p>
+                            <TextOverwrite>{movie.overview}</TextOverwrite>
+                            <p>Rating: {movie.vote_average}</p>
                         </div>
                     </NavLinkStyled>
                 </li>)}

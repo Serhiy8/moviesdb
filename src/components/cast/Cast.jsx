@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import fetchMovies from "../operations/fetchMovies";
+import fetchMovies from "../operations/tmdbMovies";
 import { List, Thumb } from "./cast.styled";
 
 const url = 'https://api.themoviedb.org/3/movie/';

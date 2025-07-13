@@ -13,16 +13,28 @@ max-width: 475px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    @media (min-width: 768px){
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap:20px;
+        justify-content: center;
+    }
 } 
 & ul > li {    
     box-shadow: 0 0 10px white, 0 0 20px white;
     border-radius: 16px;
+    @media (min-width: 768px){
+        width: 200px;
+    }
 }
 & ul > li:hover,
 & ul > li:active {    
     box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
     border-radius: 16px;
-}  
+} 
+    @media (min-width: 768px){
+        max-width: 100%;
+    }
 `
 
 export const NavLinkStyled = styled(NavLink)`
@@ -33,6 +45,10 @@ export const NavLinkStyled = styled(NavLink)`
         max-width: 475px;
         margin: 0 auto;
         border-radius: 16px 16px 0 0;
+    @media (min-width: 768px){
+        width: 200px;
+        height: 300px;
+    }
     }
     & div {
         display: flex;
@@ -41,12 +57,14 @@ export const NavLinkStyled = styled(NavLink)`
         padding: 24px 16px;
         border-top: 1px solid #ffffff;
     }
-    & h2 {
-        font-size: 24px;
-    }
     & p+h2 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+`
+export const TextOverwrite = styled.p`
+    @media (min-width: 768px){
+        display: none;
     }
 `

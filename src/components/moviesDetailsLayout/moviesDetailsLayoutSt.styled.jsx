@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Thumb = styled.div`
   padding-top: 65px;
+  padding-bottom: 32px;
 `
 const CardThumb = styled.div`
   & img {
@@ -10,7 +11,20 @@ const CardThumb = styled.div`
     border-radius: 8px;
     box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
   }
+  
+  & > div > img {
+    @media (min-width: 768px){
+      width: 200px;
+    }
+  }
 `
+export const CardTextThumb = styled.div`
+    @media (min-width: 768px){
+      display: flex;
+      gap: 20px;
+    }
+`
+
 const TextThumb = styled.div`
   line-height: 1.1em;
   letter-spacing: 0.1em;
@@ -34,6 +48,7 @@ const SpanStyled = styled.span`
 
 const List = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
   font-size: 24px;
@@ -49,10 +64,6 @@ const List = styled.ul`
       border-color: #00ffff;
     }
 
-  }
-  
-  & li:last-child{
-    margin-left: auto;
   }
 `
 const FavoriteBtn = styled.div`

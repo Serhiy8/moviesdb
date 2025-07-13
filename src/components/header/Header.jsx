@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom"
 import { HeaderStyled, NavLinkStyled, InputThumb, SignOutThumb } from "./header.styled";
 import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../../context/SessionContext";
-import { supabaseSignout } from "../operations/authService";
+import { supabaseSignout } from "../operations/supabaseService";
 
 export const Header = () => {
   const [checked, setChecked] = useState(false)
@@ -31,17 +31,17 @@ export const Header = () => {
                 <nav>
                   <ul>
                     <li><NavLinkStyled to="/">Home</NavLinkStyled></li>
-                    {session && <li><NavLinkStyled to="favorite">Favorite</NavLinkStyled></li>}                 
-                    {session && <li>
+                    {session && <li><NavLinkStyled to="favorite">Favorite</NavLinkStyled></li>}                                   
+                    {!session && <li><NavLinkStyled to="signin">Sign in</NavLinkStyled></li>}
+                    {!session && <li><NavLinkStyled to="signup">Sign up</NavLinkStyled></li>}
+                  </ul>
+                </nav>
+                {session && 
                         <SignOutThumb>
                           <p>{userEmail}</p>
                           <button type="button" onClick={supabaseSignout}>Sign Out</button>
                         </SignOutThumb>
-                      </li>}                 
-                    {!session && <li><NavLinkStyled to="signin">Sign in</NavLinkStyled></li>}
-                    {!session && <li><NavLinkStyled to="signup">Sign up</NavLinkStyled></li>}
-                  </ul>
-                </nav>               
+                      }                 
               </div>  
             </InputThumb>             
                     

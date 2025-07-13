@@ -10,6 +10,9 @@ const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    @media (min-width: 768px){
+        justify-content: center;
+    }
     & li {
         width: calc(50% - 10px);
         display: flex;
@@ -17,6 +20,10 @@ const List = styled.ul`
         gap: 8px;
         & img {
             box-shadow: 0 0 5px white, 0 0 10px white;
+        }
+        @media (min-width: 768px){
+            width: 150px;
+            justify-content: space-between;
         }
     }
 `

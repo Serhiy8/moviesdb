@@ -1,17 +1,19 @@
 import { NavLink, Outlet} from 'react-router-dom';
-import { Suspense, useContext, useEffect, useState } from 'react';
+import { Suspense, useContext, useEffect, useRef, useState } from 'react';
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import BackLink from '../backLink/BackLink';
-import { Thumb, CardThumb, TextThumb, SpanStyled, List, FavoriteBtn } from './moviesDetailsLayoutSt.styled';
+import { Thumb, CardThumb, TextThumb, SpanStyled, List, FavoriteBtn, CardTextThumb } from './moviesDetailsLayoutSt.styled';
 import { SessionContext } from '../../context/SessionContext';
-import { addToFavorite, getFromFavorite, deleteFromFavorite } from '../operations/authService';
+import { addToFavorite, getFromFavorite, deleteFromFavorite } from '../operations/supabaseService';
 
 const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}) => {
 
     const session = useContext(SessionContext);
     const [isOnFavorite, setIsOnFavorite] = useState(false);
-    const [favoriteList, setFavoriteList] = useState([])
+    const [favoriteList, setFavoriteList] = useState([]);
+    const [castPath, setCastPath] = useState(false);
+    const ref = useRef(location.pathname);
 
     useEffect (() => {
 
@@ -21,7 +23,8 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
           setFavoriteList(res)
         }
       }
-      fetchFavorite()
+      fetchFavorite();
+      setCastPath(false)
     }, [])
 
     useEffect(() => {
@@ -32,7 +35,7 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
       if(checked) {
         setIsOnFavorite(true)
       }
-    }, [dataMovie, favoriteList, favoriteList.length])
+    }, [dataMovie, favoriteList])
 
     if (!dataMovie) {
             return <p>Loading...</p>;
@@ -74,7 +77,7 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
         </BackLink>
           {dataMovie && (
             <CardThumb>
-              <div>
+              <CardTextThumb>
                 <img
                   src={`https://image.tmdb.org/t/p/w200/${dataMovie.poster_path}`}
                   alt=""
@@ -101,10 +104,10 @@ const MovieDetailsLayout = ({backLinkHref, handleBackClick, dataMovie, location}
                     </li>
                   </ul>
                 </TextThumb>
-              </div>
+              </CardTextThumb>
               <List>
                 <li>
-                  <NavLink to="cast" state={location.state}>
+                  <NavLink to={castPath ? `${ref.current}` : 'cast'} state={location.state} onClick={() => setCastPath(prev => !prev)}>
                     Cast
                   </NavLink>
                 </li>

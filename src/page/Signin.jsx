@@ -1,5 +1,5 @@
 
-import { supabaseSignin } from "../components/operations/authService";
+import { supabaseSignin } from "../components/operations/supabaseService";
 import { SigninLayout } from "../components/signInOutLayout/SigninLayout";
 
 export const Signin = () => {

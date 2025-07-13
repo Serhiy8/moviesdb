@@ -1,6 +1,6 @@
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import fetchMovies from '../components/operations/fetchMovies';
+import fetchMovies from '../components/operations/tmdbMovies';
 import MovieDetailsLayout from '../components/moviesDetailsLayout/MoviesDetailsLayout';
 
 
@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const backLinkHref = location.state?.from ?? '/moviesdb';
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     const fetchDetails = async () => {

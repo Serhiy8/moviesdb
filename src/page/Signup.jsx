@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { supabaseSignup } from "../components/operations/authService";
+import { supabaseSignup } from "../components/operations/supabaseService";
 import { SignupLayout } from "../components/signInOutLayout/SignupLayout";
 
 export const Signup = () => {
