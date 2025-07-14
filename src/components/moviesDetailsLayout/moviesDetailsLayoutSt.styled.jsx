@@ -26,8 +26,6 @@ export const CardTextThumb = styled.div`
 `
 
 const TextThumb = styled.div`
-  line-height: 1.1em;
-  letter-spacing: 0.1em;
 
   & h2{
     font-size: 32px;
