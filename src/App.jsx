@@ -10,6 +10,7 @@ import { Movies } from './page/Movies';
 import MovieDetails from './page/MovieDetails';
 import { Cast } from './components/cast/Cast';
 import { Favorite } from './page/Favorite';
+import { PrivateRoute } from './components/operations/PrivateRoute';
 
 function App() {
 
@@ -19,10 +20,13 @@ function App() {
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Home /> } />
-        <Route path="favorite" element={session ? <Favorite /> : <Navigate to="/" />}/>
-        <Route path="favorite/movies/:id" element={ <MovieDetails />}>
-          <Route path="cast" element={<Cast />}/>
+        <Route element={<PrivateRoute />}>
+          <Route path="favorite" element={<Favorite />}/>
+          <Route path="favorite/movies/:id" element={ <MovieDetails />}>
+            <Route path="cast" element={<Cast />}/>
+          </Route>
         </Route>
+        
         <Route path="movies" element={<Movies />}/>
         <Route path="movies/:id" element={ <MovieDetails />}>
           <Route path="cast" element={<Cast />}/>

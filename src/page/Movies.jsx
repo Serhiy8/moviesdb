@@ -16,12 +16,20 @@ export const Movies = () => {
         setParams(searchParams.get('query'));
         if(params !== ''){            
             setLoading(true)
-            const fetchMoviesByQuery = async () =>{
-                const data = await fetchMovies(url, {query: params});
-                if(data){
+            const fetchMoviesByQuery = async () => {
+                try {
+                    const data = await fetchMovies(url, {query: params});
+                    if(data){
                     setMovies(data.results);
                     setLoading(false)
                 }
+                } catch (error) {
+                    console.error(error)
+                }finally{
+                    setLoading(false)
+                }
+                
+                
             }
             fetchMoviesByQuery();
         }

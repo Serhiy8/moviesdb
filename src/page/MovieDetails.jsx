@@ -11,6 +11,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true)
 
   const backLinkHref = location.state?.from ?? '/';
 
@@ -20,9 +21,12 @@ const MovieDetails = () => {
         const res = await fetchMovies(`${URL}${id}`);
         if (res) {
           setDataMovie(res);
+          
         }
       } catch (error) {
         console.error(error);
+      }finally{
+        setLoading(false)
       }
     };
     fetchDetails();
@@ -34,7 +38,7 @@ const MovieDetails = () => {
 
   return (
     <div className='container'>
-      <MovieDetailsLayout backLinkHref={backLinkHref} handleBackClick={handleBackClick} dataMovie={dataMovie} location={location}/>
+      { !loading ? <MovieDetailsLayout backLinkHref={backLinkHref} handleBackClick={handleBackClick} dataMovie={dataMovie} location={location}/> : <div>Loading...</div>}
     </div>
   );
 };
