@@ -5,15 +5,18 @@ import { getFromFavorite } from "../operations/supabaseService";
 export const FavoriteLayout = ({location}) => {
 
     const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         const fetchMovies = async () =>{
             const data = await getFromFavorite();
             if(data.length === 0){
                 console.log("No movies in a favorite list!");
+                setLoading(false)
                 return;
             }
             setMovies(data);
+            setLoading(false)
         }
 
         fetchMovies();
@@ -22,7 +25,7 @@ export const FavoriteLayout = ({location}) => {
     return(
             <Thumb>
             <h1>Favorite Movies!</h1>
-                {movies.length !== 0 ? <ul>
+                {loading ? <div>Loading...</div> : movies.length !== 0 ? <ul>
                     {movies.map(movie => <li key={movie.movie_id}>
                         <NavLinkStyled to={`movies/${movie.movie_id}`} state={{from: location}}>
                             <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="" />

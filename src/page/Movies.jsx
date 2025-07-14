@@ -10,14 +10,17 @@ export const Movies = () => {
     const [searchParams, _] = useSearchParams();
     const [params, setParams] = useState('');
     const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setParams(searchParams.get('query'));
-        if(params !== ''){
+        if(params !== ''){            
+            setLoading(true)
             const fetchMoviesByQuery = async () =>{
                 const data = await fetchMovies(url, {query: params});
                 if(data){
-                    setMovies(data.results)
+                    setMovies(data.results);
+                    setLoading(false)
                 }
             }
             fetchMoviesByQuery();
@@ -27,7 +30,7 @@ export const Movies = () => {
 
     return(
         <div className="container">
-            <SearchMovie location={location} data={movies}/>
+            <SearchMovie location={location} data={movies} loading={loading}/>
         </div>
     )
 } 
