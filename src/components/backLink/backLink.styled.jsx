@@ -6,12 +6,12 @@ export const StyledBackLink = styled(NavLink)`
     justify-content: center;
     align-items: center;
     padding: 8px;
-    border: 1px solid #ffffff;
+    border: 1px solid ${({theme}) => theme.colors.white};
     border-radius: 3px;
-    color: #ffffff;
+    color: ${({theme}) => theme.colors.white};
     margin: 20px 0 30px 0;
     &:hover {
-      color: red;
-      border: 1px solid red;
+      color: ${({theme}) => theme.colors.btnHover};
+      border: 1px solid ${({theme}) => theme.colors.btnHover};
     }
   `

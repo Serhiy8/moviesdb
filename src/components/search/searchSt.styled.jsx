@@ -12,25 +12,25 @@ export const SearchThumb = styled.div`
     }
     & > form > input {
         border: none;
-        border-bottom: 1px solid #00ffff;
+        border-bottom: 1px solid ${({theme}) => theme.colors.backgroundBtn};
         outline: none;
         padding: 6px 12px;
-        background-color: #2a2a2a;
-        color: #00ffff;
+        background-color: ${({theme}) => theme.colors.btnBorder};
+        color: ${({theme}) => theme.colors.backgroundBtn};
     }
     & > form > button {
         align-self: center;
         padding: 6px 12px;
-        background: #00ffff;
+        background: ${({theme}) => theme.colors.backgroundBtn};
         outline: none;
-        border: 1px solid #2a2a2a;
+        border: 1px solid ${({theme}) => theme.colors.btnBorder};
         border-radius: 4px;
         cursor: pointer;
 
         &:hover,
         &:focus{
-            background-color: #00d4d4;
-            box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff55;
+            background-color: ${({theme}) => theme.colors.btnHover};
+            box-shadow: ${({theme}) => theme.colors.btnShadow};
         }
     }
 `

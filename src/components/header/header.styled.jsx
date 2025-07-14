@@ -6,9 +6,9 @@ const HeaderStyled = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #151515;
+  background-color: ${({theme}) => theme.colors.background};
   height: 65px;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid ${({theme}) => theme.colors.white};
   @media(min-width: 768px){
     height: fit-content;
     padding: 8px 0;
@@ -55,7 +55,7 @@ const InputThumb = styled.div`
     position: absolute;
     width: 100%;
     height: 3px;
-    background-color: white;
+    background-color: ${({theme}) => theme.colors.white};
     transition: 0.3s;
     display: block;
     border-radius: 2px;
@@ -86,7 +86,7 @@ const InputThumb = styled.div`
     gap: 24px;
     width: 100%;
     height: 100vh;
-    background-color: #151515;
+    background-color: ${({theme}) => theme.colors.background};
       @media(min-width: 768px){
         position: static;
         height: 100%;
@@ -112,9 +112,14 @@ const InputThumb = styled.div`
 `
 
 const NavLinkStyled = styled(NavLink)`
-  color: white;
+  color: ${({theme}) => theme.colors.white};
   text-decoration: none;
   font-size: 18px;
+  border-radius: 4px;
+  &:hover {
+    color: ${({theme}) => theme.colors.btnHover};
+    box-shadow: ${({theme}) => theme.colors.btnShadow}
+  }
   @media (min-width: 768px){
       padding: 6px 12px;
     }
@@ -131,16 +136,16 @@ text-align: center;
   align-self: center;
   margin-top: 16px;
   padding: 6px 12px;
-  background: #00ffff;
+  background: ${({theme}) => theme.colors.backgroundBtn};
   outline: none;
-  border: 1px solid #2a2a2a;
+  border: 1px solid ${({theme}) => theme.colors.btnBorder};
   border-radius: 4px;
   cursor: pointer;
 
   &:hover,
   &:focus{
-    background-color: #00d4d4;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff55;
+    background-color: ${({theme}) => theme.colors.btnHover};
+    box-shadow: ${({theme}) => theme.colors.btnShadow};
   }
   @media (min-width: 768px){
     margin: 0;

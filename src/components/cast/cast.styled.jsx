@@ -19,7 +19,7 @@ const List = styled.ul`
         flex-direction: column;
         gap: 8px;
         & img {
-            box-shadow: 0 0 5px white, 0 0 10px white;
+            box-shadow: ${({theme}) => theme.colors.cardBoxShadow};
         }
         @media (min-width: 768px){
             width: 150px;

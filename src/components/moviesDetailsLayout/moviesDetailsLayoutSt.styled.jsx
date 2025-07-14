@@ -9,7 +9,7 @@ const CardThumb = styled.div`
   & img {
     width: 100%;
     border-radius: 8px;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    box-shadow: ${({theme}) => theme.colors.btnShadow};
   }
   
   & > div > img {
@@ -53,13 +53,15 @@ const List = styled.ul`
   & a {
     padding: 8px 16px;
     display: block;
-    border: 1px solid #ffffff;
+    border: 1px solid ${({theme}) => theme.colors.white};
     border-radius: 8px;
-    color: #ffffff;
+    color: ${({theme}) => theme.colors.white};
 
-    &.active {
-      color: #00ffff;
-      border-color: #00ffff;
+    &.active,
+    &:hover,
+    &:focus {
+      color: ${({theme}) => theme.colors.btnHover};
+      border-color: ${({theme}) => theme.colors.btnHover};
     }
 
   }
@@ -68,13 +70,15 @@ const FavoriteBtn = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 16px;
-  border: 1px solid #ffffff;
+  border: 1px solid ${({theme}) => theme.colors.white};
   border-radius: 8px;
   cursor: pointer;
-  color: ${({ $addtofavorite }) => ($addtofavorite ? '#00ffff' : '#ffffff')};
-
+  color: ${({ $addtofavorite, theme }) => ($addtofavorite ? theme.colors.backgroundBtn : theme.colors.white)};
+  &:hover {
+    border-color: ${({theme}) => theme.colors.btnHover};
+  }
   & svg {
-    fill: ${({ $addtofavorite }) => ($addtofavorite ? '#00ffff' : '#ffffff')};
+    fill: ${({ $addtofavorite, theme }) => ($addtofavorite ? theme.colors.backgroundBtn : theme.colors.white)};
     transition: fill 0.3s ease;
   }
 
