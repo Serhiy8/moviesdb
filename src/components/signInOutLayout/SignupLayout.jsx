@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import { Thumb } from "./signupInLayout.styled";
 import { useFormChange } from "../operations/helpers";
+import { toast } from "react-toastify";
 
-export const SignupLayout = ({handldesubmit}) => {
+export const SignupLayout = ({handldeSubmit}) => {
 
     const {value, handleChange} = useFormChange();
 
     const onSubmitForm = (e) => {
         e.preventDefault();
         if(value.email.trim() === '' || value.password.trim() === ''){
+            toast.warning("Fields can't be empty.")
             return;
         }
-        handldesubmit(value)
+        handldeSubmit(value)
     }
     
 

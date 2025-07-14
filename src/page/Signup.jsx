@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom"
 import { supabaseSignup } from "../components/operations/supabaseService";
 import { SignupLayout } from "../components/signInOutLayout/SignupLayout";
+import { toast } from "react-toastify";
 
 export const Signup = () => {
 
-    const handldesubmit = (newUser) => {        
-        supabaseSignup(newUser)
+    const handldeSubmit = async(newUser) => {        
+        const response = await supabaseSignup(newUser);
+        if(response){
+            toast.warning(`${response}`);
+            return;
+        }
     }
     
     return(
-        <SignupLayout handldesubmit={handldesubmit}/>
+        <SignupLayout handldeSubmit={handldeSubmit}/>
     )
 }

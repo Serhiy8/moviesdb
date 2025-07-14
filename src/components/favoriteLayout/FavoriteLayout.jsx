@@ -5,6 +5,7 @@ import { getFromFavorite } from "../operations/supabaseService";
 export const FavoriteLayout = ({location}) => {
 
     const [movies, setMovies] = useState([]);
+    
     useEffect(() => {
         const fetchMovies = async () =>{
             const data = await getFromFavorite();

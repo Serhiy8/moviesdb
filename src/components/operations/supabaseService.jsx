@@ -1,20 +1,20 @@
 import { supabase } from "../../supabase/supabase";
 
 const supabaseSignup = async(newUser) => {
-    const { data, error } = await supabase.auth.signUp(newUser);
+    const { error } = await supabase.auth.signUp(newUser);
     if(error){
         console.log(error.message);
-        return;
+        return error.message;
     }
-    return {data};
+    return;
 }
 const supabaseSignin = async(user) => {
-    const { data, error } = await supabase.auth.signInWithPassword(user)
+    const { error } = await supabase.auth.signInWithPassword(user);
     if(error){
         console.log(error.message);
-        return;
+        return error.message;
     }
-    return {data};
+    return;
 }
 
 const supabaseSignout = async() => {

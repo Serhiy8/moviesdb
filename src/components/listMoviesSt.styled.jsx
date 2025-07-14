@@ -11,11 +11,9 @@ max-width: 475px;
 }
 & ul {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 32px;
     @media (min-width: 768px){
-        flex-direction: row;
-        flex-wrap: wrap;
         gap:20px;
         justify-content: center;
     }
@@ -23,6 +21,7 @@ max-width: 475px;
 & ul > li {    
     box-shadow: 0 0 10px white, 0 0 20px white;
     border-radius: 16px;
+    width: calc(50% - 16px);
     @media (min-width: 768px){
         width: 200px;
     }
@@ -64,6 +63,9 @@ export const NavLinkStyled = styled(NavLink)`
     }
 `
 export const TextOverwrite = styled.p`
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     @media (min-width: 768px){
         display: none;
     }
